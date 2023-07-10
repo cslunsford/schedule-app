@@ -3,7 +3,7 @@ $(function () {
     var timeBlockEl = $(this).closest('.time-block');
     var i = timeBlockEl.index();
     var description = timeBlockEl.find('.description').val();
-    storeDescription(i, description);
+    storeDescription(i+9, description);
   });
 
   var schedule = $('#schedule');
@@ -24,9 +24,9 @@ $(function () {
     var saveBtnEl = $('<button>').addClass('btn saveBtn col-2 col-md-1').attr('aria-label', 'save').append($('<i>').addClass('fas fa-save'));
     timeBlockEl.append(hourEl, textAreaEl, saveBtnEl);
     schedule.append(timeBlockEl);
+    displayDescription(i, textAreaEl);
     }
   
-  displayDescription(i, textAreaEl);
   
   function storeDescription(i, description) {
     localStorage.setItem('timeBlockEl' + i, JSON.stringify(description));
